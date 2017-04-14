@@ -8,8 +8,9 @@ RUN apt-get update && \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
 
-ADD files/ etc/nginx/
-
 EXPOSE 80
+WORKDIR /tmp
+
+ADD files/ /etc/nginx/
 
 CMD ["nginx", "-g", "daemon off;"]
